@@ -1,7 +1,9 @@
-from selene.browsers import BrowserName
-from selene.api import *
 from unittest import TestCase
-import time
+
+import allure
+import pytest
+from selene.api import *
+from selene.browsers import BrowserName
 
 
 class TestWindyApp(TestCase):
@@ -10,10 +12,16 @@ class TestWindyApp(TestCase):
         browser.open_url('https://www.windy.com/')
         config.reports_folder = "selene_reports"
 
+    @allure.severity(allure.severity_level.CRITICAL)
+    @allure.feature("Menu.")
+    @allure.testcase("Windy burger menu works correct.")
     def test_menu_burger(self):
         s('#menu-burger2').should(be.visible).click()
         s('div.rhpane-menu').should(be.visible)
 
+    @allure.severity(allure.severity_level.CRITICAL)
+    @allure.feature("Search.")
+    @allure.testcase("Search city and check weather pop-up.")
     def test_search_city_weather(self):
         city = "Lviv"
         # Search city weather
