@@ -13,13 +13,6 @@ jobs:
             sudo dpkg -i google-chrome.deb
             sudo sed -i 's|HERE/chrome"|HERE/chrome" --no-sandbox|g' /opt/google/chrome/google-chrome
             rm google-chrome.deb
-      - run:
-          name: Install Allure
-          command: |
-            sudo apt-get install software-properties-common
-            sudo apt-add-repository -y ppa:qameta/allure
-            sudo apt-get update
-            sudo apt-get install allure
       - checkout
       - restore_cache:
           key: deps1-{{ .Branch }}-{{ checksum "requirements.txt" }}
@@ -37,10 +30,6 @@ jobs:
           command: |
             . venv/bin/activate
             pytest tests/windy_test.py --junitxml=test-reports/results.xml --alluredir=allure_reports
-      - run:
-          command: |
-            . venv/bin/activate
-            allure serve allure_reports
       - store_artifacts:
           path: selene-reports
       - store_artifacts:
