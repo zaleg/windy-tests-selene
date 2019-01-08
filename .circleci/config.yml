@@ -29,4 +29,8 @@ jobs:
       - run:
           command: |
             . venv/bin/activate
-            pytest tests/windy_test.py
+            pytest tests/windy_test.py --junitxml=test-reports/results.xml
+      - store_artifacts:
+          path: selene-reports
+      - store_test_results:
+          path: test-reports
