@@ -34,3 +34,19 @@ jobs:
           path: selene-reports
       - store_test_results:
           path: test-reports
+
+workflows:
+   version: 2
+   commit:
+     jobs:
+      - build
+   nightly:
+     triggers:
+       - schedule:
+          # 4am UTC
+          cron: "0 04 * * *"
+          filters:
+            branches:
+              only: master
+     jobs:
+       - build
