@@ -17,7 +17,7 @@ jobs:
           name: Install Allure
           command: |
             sudo apt-get install software-properties-common
-            sudo apt-add-repository ppa:qameta/allure
+            sudo apt-add-repository -y ppa:qameta/allure
             sudo apt-get update
             sudo apt-get install allure
       - checkout
