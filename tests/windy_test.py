@@ -25,7 +25,7 @@ class TestWindyApp(TestCase):
     def test_search_city_weather(self):
         city = "Lviv"
         # Search city weather
-        s('#q').should(be.visible).set(city).press_enter()
+        s('#q').should(be.visible).set(city + " city").press_enter()
         # Click on first search result
         ss('div.results > div > a')[0].click()
         # Validate proper detailed weather opened
