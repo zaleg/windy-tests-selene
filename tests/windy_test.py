@@ -29,7 +29,7 @@ class TestWindyApp(TestCase):
         # Click on first search result
         ss('div.results > div > a')[0].click()
         # Validate proper detailed weather opened
-        s('div.stations-container.content-container').should(have.text(city))
+        s('div.wx').should(have.text(city))
 
     def tearDown(self):
         browser.close()
