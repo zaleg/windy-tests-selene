@@ -31,7 +31,7 @@ jobs:
             . venv/bin/activate
             pytest tests/windy_test.py --junitxml=test-reports/results.xml --alluredir=allure_reports
       - store_artifacts:
-          path: selene-reports
+          path: tests/screenshots
       - store_artifacts:
           path: allure_reports
       - store_test_results:
