@@ -24,7 +24,6 @@ class TestWindyApp(TestCase):
     @allure.testcase("Search location and check weather pop-up.")
     def test_search_city_weather(self):
         location = "Lviv International Airport"
-        coordinates = "N49°48'46", E23°57'36""
         # Search location weather
         s('#q').should(be.visible).set(location).press_enter()
         # Click on first search result
