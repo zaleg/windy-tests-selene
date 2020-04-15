@@ -24,14 +24,14 @@ class TestWindyApp(TestCase):
     @allure.testcase("Search location and check weather pop-up.")
     def test_search_city_weather(self):
         location = "Lviv International Airport"
+        coordinates = "N49°48'46", E23°57'36""
         # Search location weather
         s('#q').should(be.visible).set(location).press_enter()
         # Click on first search result
         ss('div.results > div > a')[0].click()
         # Validate proper detailed weather opened.
-        # Open related popup tab.
-        s('#plugin-airport').s('div[data-do="set,info"]').click()
-        s('div.section-title').should(have.exact_text(location))
+        # TODO: improve locator to validate proper location on UI
+        s('#detail-data-table').should(be.visible)
 
     def tearDown(self):
         browser.close()
